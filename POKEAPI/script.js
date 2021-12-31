@@ -13,7 +13,26 @@ window.onload = () => {
 
   bodyDoc.style.backgroundColor = 'black'
 
+  let inputText = document.querySelector('input')
 
+  inputText.addEventListener('keyup', (e)=>{
+   valorCampo = e.target.value
+    const pokeFiltrado = globalVariable.filter((item)=>{
+    return  item.name.includes(valorCampo)
+    })
+    let mainDivCont = document.getElementById('container')
+    let dropDownTypes = document.getElementById('tiposPokemon')
+    dropDownTypes.value = 'showMeAll'
+    let AllDivs = document.getElementsByClassName("card_pkm")
+    let ArrDivs = []
+    ArrDivs = [...AllDivs]
+    ArrDivs.forEach((item)=>{
+      mainDivCont.removeChild(item)
+      
+    })
+    mainDivCont.remove()
+    FilterInDom(pokeFiltrado)
+  })
   let printToDom = (data) => {
     id = id + 1;
  /*    let divContainer = document.getElementById("container"); */
